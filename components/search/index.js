@@ -54,19 +54,16 @@ const Search = () => {
       {searchResult.length > 0 ? (
         <>
           <h3>Results {searchResult.length}</h3>
-          <div className={"scroll"}>
-            <ul className={`hs full no-scrollbar`}>
-              {searchResult.map((book) => (
-                <li className={"item"}>
-                  <BookCard
-                    title={book.title}
-                    author={book.author.name}
-                    thumbnail={book.thumbnail}
-                    key={book.id}
-                  />
-                </li>
-              ))}
-            </ul>
+          <div className={"container"}>
+            {searchResult.map((book) => (
+              <BookCard
+                title={book.title}
+                author={book.author.name}
+                thumbnail={book.thumbnail}
+                key={book.id}
+                className={"card"}
+              />
+            ))}
           </div>
         </>
       ) : null}
