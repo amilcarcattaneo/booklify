@@ -11,21 +11,20 @@
   margin-right: 7px;
 }
 
-.menuItem {
-  padding: 0 40px;
-  margin: 5px 10px;
-  user-select: none;
-  cursor: pointer;
-  border: none;
+.scroll {
+  display: grid;
+  grid-template-columns: 20px 1fr 20px;
 }
-.menuItemWrapper.active {
-  border: 1px blue solid;
+.scroll > * {
+  grid-column: 2 / -2;
 }
-.menuItem.active {
-  border: 1px green solid;
+.scroll > .full {
+  grid-column: 1 / -1;
 }
 
-.scrollMenuArrow {
-  padding: 20px;
-  cursor: pointer;
+.hs {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(6, calc(50% - 40px));
+  grid-template-rows: minmax(150px, 1fr);
 }

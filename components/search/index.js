@@ -15,7 +15,7 @@ const MenuItem = ({ book, selected }) => {
       author={book.author.name}
       thumbnail={book.thumbnail}
       key={book.id}
-      className={`${styles.menuItem} ${selected ? "active" : ""}`}
+      className={`${searchStyles.menuItem} ${selected ? "active" : ""}`}
     />
   );
 };
