@@ -87,13 +87,20 @@ const Search = () => {
         <div className={styles.container}>
           <h3>Results {searchResult.length}</h3>
           <div className={styles.grid}>
-            <ScrollMenu
-              data={Menu(searchResult, searchResult[0].id)}
-              arrowLeft={ArrowLeft}
-              arrowRight={ArrowRight}
-              selected={selected}
-              onSelect={onSelect}
-            />
+            <div className={"scroll"}>
+              <ul className={`hs full no-scrollbar`}>
+                {searchResult.map((book) => (
+                  <li className={"item"}>
+                    <BookCard
+                      title={book.title}
+                      author={book.author.name}
+                      thumbnail={book.thumbnail}
+                      key={book.id}
+                    />
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       ) : null}
