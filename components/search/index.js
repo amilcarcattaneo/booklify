@@ -1,42 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-import ScrollMenu from "react-horizontal-scrolling-menu";
-
-import styles from "../../styles/Home.module.css";
 import searchStyles from "./Search.module.css";
 
 import BookCard from "../../components/bookcard/index";
-
-const MenuItem = ({ book, selected }) => {
-  return (
-    <BookCard
-      title={book.title}
-      author={book.author.name}
-      thumbnail={book.thumbnail}
-      key={book.id}
-      className={`${searchStyles.menuItem} ${selected ? "active" : ""}`}
-    />
-  );
-};
-
-export const Menu = (list, selected) =>
-  list.map((book) => {
-    return <MenuItem book={book} key={book.id} selected={selected} />;
-  });
-
-const Arrow = ({ text, className }) => {
-  return <div className={className}>{text}</div>;
-};
-
-const ArrowLeft = Arrow({ text: "<", className: "arrow-prev" });
-const ArrowRight = Arrow({ text: ">", className: "arrow-next" });
 
 const Search = () => {
   const [searchValue, setSearchValue] = useState("");
   const [searchBy, setSearchBy] = useState("authors");
   const [searchResult, setSearchResult] = useState([]);
-  const [selected, setSelected] = useState("");
 
   const handleSearchBook = async (event) => {
     event.preventDefault();
@@ -51,10 +23,6 @@ const Search = () => {
     if (status === 200) {
       setSearchResult(Array.isArray(data) ? data : [data]);
     }
-  };
-
-  const onSelect = (key) => {
-    setSelected(key);
   };
 
   return (
@@ -84,25 +52,23 @@ const Search = () => {
         </button>
       </form>
       {searchResult.length > 0 ? (
-        <div className={styles.container}>
+        <>
           <h3>Results {searchResult.length}</h3>
-          <div className={styles.grid}>
-            <div className={"scroll"}>
-              <ul className={`hs full no-scrollbar`}>
-                {searchResult.map((book) => (
-                  <li className={"item"}>
-                    <BookCard
-                      title={book.title}
-                      author={book.author.name}
-                      thumbnail={book.thumbnail}
-                      key={book.id}
-                    />
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <div className={"scroll"}>
+            <ul className={`hs full no-scrollbar`}>
+              {searchResult.map((book) => (
+                <li className={"item"}>
+                  <BookCard
+                    title={book.title}
+                    author={book.author.name}
+                    thumbnail={book.thumbnail}
+                    key={book.id}
+                  />
+                </li>
+              ))}
+            </ul>
           </div>
-        </div>
+        </>
       ) : null}
     </>
   );

@@ -1,7 +1,7 @@
 .bookThumbnail {
   display: block;
   height: auto;
-  padding: 0.5em;
   width: 30%;
+  padding: 0.5em;
   border-radius: 1.5em;
 }
