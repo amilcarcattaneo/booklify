@@ -3,7 +3,7 @@ import axios from "axios";
 
 import searchStyles from "./Search.module.css";
 
-import BookCard from "../../components/bookcard/index";
+import HorizontalScrolling from "../../components/horizontalscrolling/index";
 
 const Search = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -54,17 +54,7 @@ const Search = () => {
       {searchResult.length > 0 ? (
         <>
           <h3>Results {searchResult.length}</h3>
-          <div className={"container"}>
-            {searchResult.map((book) => (
-              <BookCard
-                title={book.title}
-                author={book.author.name}
-                thumbnail={book.thumbnail}
-                key={book.id}
-                className={"card"}
-              />
-            ))}
-          </div>
+          <HorizontalScrolling booksList={searchResult} />
         </>
       ) : null}
     </>

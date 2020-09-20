@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 
-import BookCard from "../../components/bookcard/index";
+import HorizontalScrolling from "../../components/horizontalscrolling/index";
 import Panel from "../../components/panel/index";
 import Search from "../../components/search/index";
 
@@ -60,14 +60,7 @@ class Home extends React.Component {
               </div>
               <h3>My Library</h3>
               <div className={styles.grid}>
-                {books.map((book) => (
-                  <BookCard
-                    title={book.title}
-                    author={book.author.name}
-                    thumbnail={book.thumbnail}
-                    key={book.id}
-                  />
-                ))}
+                <HorizontalScrolling booksList={books} />
               </div>
             </main>
           </div>
