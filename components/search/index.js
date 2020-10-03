@@ -17,11 +17,18 @@ const Search = () => {
       searchBy === "authors" ? "/books" : ""
     }`;
 
-    const { status, data } = await axios.get(url, {
-      validateStatus: false,
-    });
-    if (status === 200) {
-      setSearchResult(Array.isArray(data) ? data : [data]);
+    const response = await axios
+      .get(url, {
+        validateStatus: false,
+      })
+      .catch((err) => {
+        setSearchResult([]);
+      });
+
+    if (response) {
+      setSearchResult(
+        Array.isArray(response.data) ? response.data : [response.data]
+      );
     }
   };
 

@@ -14,8 +14,10 @@ const fetchUserBooks = async (query) => {
 
   const url = `${process.env.API_URL}/users/${arQueries.user}/books`;
 
-  const books = await axios.get(url);
-  return books.data;
+  const { data } = await axios.get(url).catch((err) => {
+    return [];
+  });
+  return data;
 };
 
 class Home extends React.Component {
